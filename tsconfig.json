@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    // 최신 JavaScript 문법 사용(ES6)
+    "module": "ESNext",
+    // 최신 ECMAScript 모듈 시스템 사용 (ESM)
+    "jsx": "react-jsx",
+    // React-JSX 문법을 사용할 수 있도록 설정
+    "declaration": true,
+    // .d.ts 파일 자동 생성
+    "outDir": "./dist",
+    // 빌드 결과물이 저장될 폴더 지정
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+  // src 폴더 내부만 컴파일
+}
