@@ -1,17 +1,20 @@
 /** @format */
 
-export function TcreateStore(initializer) {
+export function createStore(initializer) {
   let state;
 
   const getState = () => state;
 
-  if (typeof initializer === "function") {
-    state = initializer();
-  } else {
-    state = initializer;
-  }
+  const setState = (updater) => {
+    const newState = typeof updater === "function" ? updater(state) : updater;
+
+    state = newState;
+  };
+
+  state = typeof initializer === "function" ? initializer() : initializer;
 
   return {
     getState,
+    setState,
   };
 }
