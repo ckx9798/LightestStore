@@ -1,13 +1,15 @@
 /** @format */
 
-export function createStore(createState) {
+export function TcreateStore(initializer) {
   let state;
 
-  // 현재 state를 반환
   const getState = () => state;
 
-  // 상태 생성
-  state = createState(getState);
+  if (typeof initializer === "function") {
+    state = initializer();
+  } else {
+    state = initializer;
+  }
 
   return {
     getState,
