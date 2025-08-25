@@ -7,7 +7,11 @@ export function createStore(initializer) {
   const setState = (updater) => {
     const newState = typeof updater === "function" ? updater(state) : updater;
 
-    state = { ...state, ...newState };
+    if (typeof state === "object" && typeof newState === "object") {
+      state = { ...state, ...newState };
+    } else {
+      state = updater;
+    }
   };
 
   state = typeof initializer === "function" ? initializer() : initializer;
