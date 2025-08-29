@@ -3,17 +3,24 @@
 export function createStore(initializer) {
   let state;
 
-  const listener = new Set();
+  const listeners = new Set();
 
   const getState = () => state;
 
   const setState = (updater) => {
     const newState = typeof updater === "function" ? updater(state) : updater;
 
+    let nextState;
+
     if (typeof state === "object" && typeof newState === "object") {
-      state = { ...state, ...newState };
+      nextState = { ...state, ...newState };
     } else {
-      state = updater;
+      nextState = newState;
+    }
+
+    if (!Object.is(state, nextState)) {
+      state = nextState;
+      listeners.forEach((listener) => listener());
     }
   };
 
