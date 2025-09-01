@@ -1,8 +1,8 @@
 <!-- @format -->
 
-# ⚡️ LightStore
+# ⚡️ LightestStore
 
-LightStore는 최소한의 API로 React 애플리케이션의 전역 상태를 쉽고 직관적으로 관리할 수 있도록 설계되었습니다.
+LightestStore는 최소한의 API로 React 애플리케이션의 전역 상태를 쉽고 직관적으로 관리할 수 있도록 설계되었습니다.
 복잡한 보일러플레이트 없이, 가볍고 빠르게 상태 관리를 할 수 있습니다.
 
 ## ✨ Features
@@ -14,11 +14,11 @@ LightStore는 최소한의 API로 React 애플리케이션의 전역 상태를 �
 
 ## 🏗️ 설계 철학 및 기술
 
-LightStore는 안정적이고 예측 가능한 상태 관리를 위해 다음과 같은 기술과 패턴을 활용했습니다.
+LightestStore는 안정적이고 예측 가능한 상태 관리를 위해 다음과 같은 기술과 패턴을 활용했습니다.
 
 - **클로저(Closure) 및 캡슐화(Encapsulation)**
 
-  > LightStore는 클로저(Closure)를 활용하여 스토어의 내부 상태(`state`, `listeners`)를 외부로부터 격리하는 캡슐화(Encapsulation)를 구현했습니다. 그 이유는 스토어의 핵심 데이터가 외부에서 직접 수정되는 것을 원천적으로 차단하고, 오직 `setState`와 같은 정해진 API를 통해서만 상태가 변경되도록 강제하여 데이터의 무결성을 보장하기 위함입니다.
+  > LightestStore는 클로저(Closure)를 활용하여 스토어의 내부 상태(`state`, `listeners`)를 외부로부터 격리하는 캡슐화(Encapsulation)를 구현했습니다. 그 이유는 스토어의 핵심 데이터가 외부에서 직접 수정되는 것을 원천적으로 차단하고, 오직 `setState`와 같은 정해진 API를 통해서만 상태가 변경되도록 강제하여 데이터의 무결성을 보장하기 위함입니다.
 
 - **옵저버 패턴(Observer Pattern) 및 구독(Subscription)**
 
@@ -44,7 +44,7 @@ yarn add lighteststore
 
 ## 🚀 Getting Started: 사용 예제
 
-LightStore를 사용하여 `count`와 `name` 상태를 각각 다른 컴포넌트에서 독립적으로 관리하는 예제입니다. 이 예제는 셀렉터(Selector)가 어떻게 불필요한 리렌더링을 방지하는지 명확하게 보여줍니다.
+LightestStore는 사용하여 `count`와 `name` 상태를 각각 다른 컴포넌트에서 독립적으로 관리하는 예제입니다. 이 예제는 셀렉터(Selector)가 어떻게 불필요한 리렌더링을 방지하는지 명확하게 보여줍니다.
 
 ### 1\. 스토어 생성하기 (`appStore.js`)
 
@@ -52,7 +52,7 @@ LightStore를 사용하여 `count`와 `name` 상태를 각각 다른 컴포넌�
 
 ```javascript
 // src/stores/appStore.js
-import { createStore } from "lighteststore";
+import { createStore } from "LightestStore";
 
 export const appStore = createStore((set) => ({
   count: 0,
@@ -71,7 +71,7 @@ export const appStore = createStore((set) => ({
 ```jsx
 // src/components/Counter.jsx
 import React, { useCallback } from "react";
-import { useStore } from "lighteststore";
+import { useStore } from "LightestStore";
 import { appStore } from "../stores/appStore";
 
 export default function Counter() {
@@ -101,7 +101,7 @@ export default function Counter() {
 ```jsx
 // src/components/Profile.jsx
 import React, { useCallback } from "react";
-import { useStore } from "lighteststore";
+import { useStore } from "LightestStore";
 import { appStore } from "../stores/appStore";
 
 export default function Profile() {
@@ -136,7 +136,7 @@ import Profile from "./components/Profile";
 export default function App() {
   return (
     <div>
-      <h1>⚡️ LightStore 예제</h1>
+      <h1>⚡️ LightestStore 예제</h1>
       <Counter />
       <Profile />
     </div>
