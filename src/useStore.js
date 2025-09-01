@@ -2,16 +2,19 @@
 
 import { useEffect, useState } from "react";
 
-export function useStore(store) {
-  const [state, setState] = useState(store.getState());
+export function useStore(store, selector) {
+  const [state, setState] = useState(() => selector(store.getState()));
 
   useEffect(() => {
-    const listener = () => setState(store.getState());
+    const listener = () => {
+      const newSelectedState = selector(store.getState());
+      setState(newSelectedState);
+    };
 
     const unsubscribe = store.subscribe(listener);
 
     return unsubscribe;
-  }, [store]);
+  }, [store, selector]);
 
-  return [state, setState];
+  return [state, store.setState];
 }
